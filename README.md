@@ -32,7 +32,14 @@ For further information on all design and filter settings, see the [Bindcraft do
 
 ## Tuning the effect of TM-weighting
 
+As described in our preprint, the pTMEnergy term in BECraft incorporates a weighting scheme derived from the predicted TM-score (pTM) formulation. Specifically, the contribution of each predicted alignment error bin is scaled by a function $g(d_b)$ that up-weights smaller errors, reflecting the importance of accurate local packing for protein stability and inter-chain interactions. This design choice aims to guide the binder generation process towards structures with well-defined interfaces. 
 
+However, we sometimes observe that an overly strong emphasis on this local packing, as enforced by the default TM-weighting, can hinder the exploration of other crucial aspects of binder design. In such cases, downweighting or even disabling the TM-weighting might be beneficial.
 
-## Analyzing binders
+To address this potential trade-off, BECraft provides the `iptmenergy_lambda` parameter within the advanced settings JSON file. This parameter serves as a scaling factor for the pTMEnergy loss:
 
+-   Setting `lambda` to `1` (the default value) applies the full calculated pTMEnergy during the design process. This is generally recommended as a starting point to encourage well-packed interfaces.
+
+-   Setting `lambda` to `0` completely disables TM-weighting. This results in an energy score that is simply the -LogSumExp over pAE logits, averaged over interface residue pairs.
+
+It is recommended to experiment with different values to determine the optimal balance for a given design problem. 
