@@ -1,6 +1,6 @@
 # BECraft
 
-**BECraft** (BindEnergyCraft) is a drop-in extension of the protein–binder design pipeline first introduced in BindCraft (Pačesa et al., 2024). By adding an energy-based loss to the original AlphaFold2-back-propagation workflow, we improve binder designs while maintaining the user-friendly pipeline of BindCraft!
+**BECraft** (BindEnergyCraft) is a drop-in extension of the protein–binder design pipeline first introduced in BindCraft (Pacesa et al., 2024). By adding an energy-based loss to the original AlphaFold2-back-propagation workflow, we improve binder designs while maintaining the user-friendly pipeline of BindCraft!
 
 ![alt text](becraft/method.png)
 
@@ -18,7 +18,7 @@ Next, navigate to the ```ColabDesign``` directory and run ```pip install -e .```
 
 ## Running binder design
 
-To run binder design, execute the following command:
+To run binder design, activate the newly created ```BindCraft``` environment and navigate to the ```becraft``` directory. Then, execute the following command:
 
 ```
 python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/no_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'

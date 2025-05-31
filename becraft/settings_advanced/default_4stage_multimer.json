@@ -32,6 +32,7 @@
     "weights_iptm": 0,
     "use_i_ptm_energy_loss": true,
     "weights_iptmenergy_loss": 0.05,
+    "iptmenergy_lambda": 1,
     "use_rg_loss": true,
     "weights_rg": 0.3,
     "use_termini_distance_loss": false,

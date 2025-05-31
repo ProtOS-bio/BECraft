@@ -56,7 +56,7 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
 
     if advanced_settings["use_i_ptm_energy_loss"]:
         # interface pTMEnergy loss
-        add_i_ptm_energy_loss(af_model, advanced_settings["weights_iptmenergy_loss"])
+        add_i_ptm_energy_loss(af_model, advanced_settings["weights_iptmenergy_loss"], advanced_settings["iptmenergy_lambda"])
 
     if advanced_settings["use_i_ptm_loss"]:
         # interface pTM loss
@@ -395,9 +395,9 @@ def add_i_ptm_loss(self, weight=0.1):
     self._callbacks["model"]["loss"].append(loss_iptm)
     self.opt["weights"]["i_ptm"] = weight
 
-def add_i_ptm_energy_loss(self, weight=0.1):
+def add_i_ptm_energy_loss(self, weight=0.1, tm_lambda=1):
     def loss_iptmenergy(inputs, outputs):
-        i_ptm_energy = get_iptmenergy(inputs, outputs) # want to minimize iptmenergy, so no 1 minus
+        i_ptm_energy = get_iptmenergy(inputs, outputs, tm_lambda) # want to minimize iptmenergy, so no 1 minus
         return {"i_ptm_energy": i_ptm_energy}
 
     self._callbacks["model"]["loss"].append(loss_iptmenergy)

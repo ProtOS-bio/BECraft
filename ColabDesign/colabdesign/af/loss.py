@@ -239,7 +239,7 @@ def get_iptm_mean(inputs, outputs):
 
   return (per_alignment * residue_weights).mean()
 
-def get_iptmenergy(inputs, outputs):
+def get_iptmenergy(inputs, outputs, tm_lambda):
   # default interface=True
   logits = outputs["predicted_aligned_error"]["logits"]
   asym_id = inputs["asym_id"]
@@ -254,7 +254,7 @@ def get_iptmenergy(inputs, outputs):
   d0 = 1.24 * (clipped_num_res - 15) ** (1./3) - 1.8
   weights = 1. / (1 + jnp.square(bin_centers) / jnp.square(d0))
 
-  weighted_logits = logits + jnp.log(weights)[None, None, :]
+  weighted_logits = logits + (tm_lambda * jnp.log(weights)[None, None, :])
   positional_energy = -jax.nn.logsumexp(weighted_logits, axis=-1)
 
   mask = (asym_id[:, None] != asym_id[None, :]).astype(jnp.float32)
