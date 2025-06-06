@@ -24,9 +24,7 @@ To run binder design, activate the newly created ```BindCraft``` environment and
 python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/no_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
 ```
 
-Importantly, in the default configuration provided in ```default_4stage_multimer.json```, the iptmenergy loss has a weight of 1, and the iptm loss has a weight of 0. To use other design configuration jsons, similarly add the iptmenergy field.
-
-By default, MPNN optimization is disabled. Please set this to True if necessary.
+Importantly, in the default configuration provided in ```default_4stage_multimer.json```, the iptmenergy loss has a weight of 1, and the iptm loss has a weight of 0. To use other design configuration jsons, similarly add the iptmenergy field. By default, MPNN optimization is disabled. Please set this to True if necessary.
 
 For further information on all design and filter settings, see the [Bindcraft documentation](becraft/README.md).
 
