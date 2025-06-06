@@ -33,6 +33,7 @@ For further information on all design and filter settings, see the [Bindcraft do
 In ```becraft/example```, we provide a comparison of 100 designs generated using:
 - BindCraft: optimizing ipTM with weight of 1
 - BECraft: optimizing interface pTMEnergy with weight of 1
+
 All other parameters are identical for fair comparison.
 
 ![pdl1_result](becraft/example/figures/bindcraft_vs_becraft_violin.png)
