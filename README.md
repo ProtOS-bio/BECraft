@@ -24,7 +24,7 @@ To run binder design, activate the newly created ```BindCraft``` environment and
 python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/no_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
 ```
 
-Importantly, in the default configuration provided in ```default_4stage_multimer.json```, the iptmenergy loss has a weight of $\mathbf{0.05}$, and the iptm loss has a weight of $\mathbf{0}$. To use other design configuration jsons, similarly add the iptmenergy field.
+Importantly, in the default configuration provided in ```default_4stage_multimer.json```, the iptmenergy loss has a weight of 1, and the iptm loss has a weight of 0. To use other design configuration jsons, similarly add the iptmenergy field.
 
 By default, MPNN optimization is disabled. Please set this to True if necessary.
 
@@ -40,13 +40,6 @@ All other parameters are identical for fair comparison.
 ![pdl1_result](becraft/example/figures/bindcraft_vs_becraft_violin.png)
 
 Binder design outcomes are highly target-dependent. While BECraft generally improves performance, it is not universally superior. Notably, increasing the weight of the energy-based loss (from the default 0.05 in BindCraft to a higher value like 1.0) often yields better results, even when compared to increasing the ipTM loss to the same weight under otherwise identical settings.
-
-## Tuning the weight of ipTM / pTMEnergy
-
-- caveat that design highly depends on target, and becraft is not better in all scenarios
-- in general though, we find energy opt tends to help, especially if weight is higher
-- in original bindcraft, iptm weight is .05
-- found that changing weight to higher (e.g. 1) helps for both base bindcraft (iptm optimization) and becraft (ptmenergy optimization)
 
 ## Tuning the effect of TM-weighting
 
