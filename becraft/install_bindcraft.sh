@@ -88,7 +88,7 @@ fi
 
 # install ColabDesign
 echo -e "Installing ColabDesign\n"
-pip3 install git+https://github.com/sokrypton/ColabDesign.git --no-deps || { echo -e "Error: Failed to install ColabDesign"; exit 1; }
+pip3 install git+file:///content/colabdesign --no-deps || { echo -e "Error: Failed to install ColabDesign"; exit 1; }
 python -c "import colabdesign" >/dev/null 2>&1 || { echo -e "Error: colabdesign module not found after installation"; exit 1; }
 
 # AlphaFold2 weights
